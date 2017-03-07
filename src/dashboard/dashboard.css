@@ -1,0 +1,16 @@
+.dashGrid {
+  background: whitesmoke;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.panel {
+  margin: 10px;
+  background: white;
+  box-shadow: 3px 3px 15px #ccc;
+  width: 500px;
+  height: 500px;
+}

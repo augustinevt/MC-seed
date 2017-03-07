@@ -1,12 +1,18 @@
 import React from 'react';
-import InventoryPanel from './InventoryPanel';
-import MarketPanel from './MarketPanel';
+import DashPanel from './DashPanel';
+import styles from '../dashboard.css';
 
 const DashGrid = (props) => {
+  console.log(styles)
+
+  const panels = [
+    <DashPanel id='container2' title='Market Panel' />,
+    <DashPanel id='container1' title='Inventory Panel' />,
+  ];
+
   return (
-    <div style={{ margin: 'auto', border: 'solid', display: 'flexbox', flexDirection: 'row' }} >
-      <InventoryPanel />
-      <MarketPanel />
+    <div className={ styles.dashGrid } >
+      {panels}
     </div>
   )
 }
