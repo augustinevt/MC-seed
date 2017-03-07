@@ -1,5 +1,5 @@
 import React from 'react';
-import dashActions from '../actions/dashboardActions';
+import dashActions from './dashboardActions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {

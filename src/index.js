@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import App from './App';
-import DashboardReducer from './reducers/dashboardReducer';
+import DashboardReducer from './dashboard/dashboardReducer';
 
 import './index.css';
 
