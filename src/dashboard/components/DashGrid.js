@@ -4,10 +4,9 @@ import MarketPanel from './MarketPanel';
 
 const DashGrid = (props) => {
   return (
-    <div style={{ margin: 'auto', border: 'solid', width: '400px', height: '200px', display: 'flexbox', 'align-item': 'center' }} >
+    <div style={{ margin: 'auto', border: 'solid', display: 'flexbox', flexDirection: 'row' }} >
       <InventoryPanel />
       <MarketPanel />
-
     </div>
   )
 }
