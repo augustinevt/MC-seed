@@ -4,8 +4,13 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
-import App from './App';
+import { Router, Route, browserHistory } from 'react-router';
+
+
 import DashboardReducer from './dashboard/dashboardReducer';
+
+import DashboardContainer from './dashboard/DashboardContainer';
+
 
 import './index.css';
 
@@ -20,7 +25,10 @@ const store = createStore( DashboardReducer, applyMiddleware(...middleware))
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={browserHistory} >
+      <Route path="/" component={ DashboardContainer }>
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
