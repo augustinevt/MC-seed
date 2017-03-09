@@ -7,9 +7,8 @@ import thunk from 'redux-thunk';
 import { Router, Route, browserHistory } from 'react-router';
 
 
-import DashboardReducer from './dashboard/dashboardReducer';
-
-import DashboardContainer from './dashboard/DashboardContainer';
+import featOneReducer from './featOne/reducer';
+import FeatOneContainer from './featOne/FeatOneContainer';
 
 
 import './index.css';
@@ -20,13 +19,13 @@ if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger());
 }
 
-const store = createStore( DashboardReducer, applyMiddleware(...middleware))
+const store = createStore( featOneReducer, applyMiddleware(...middleware))
 
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory} >
-      <Route path="/" component={ DashboardContainer }>
+      <Route path="/" component={ FeatOneContainer }>
       </Route>
     </Router>
   </Provider>,
