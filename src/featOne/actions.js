@@ -1,9 +1,15 @@
-import mockData from '../../MOCK_DATA.json';
+import mockData from '../../mockData/defaultReport.json';
 import { LOAD_REPORT } from './actionTypes';
 
+import jsonDemo from '../helpers/jsonDemo';
+import dataFunctions from '../helpers/dataFunctions';
+
+dataFunctions(jsonDemo)
+
+
 export const loadReport = () => (dispatch) => {
-  setTimeout(function () {
-    console.log(mockData)
-    dispatch({ type: LOAD_REPORT, payload: { food: 'yum'} });
-  }, 500);
+
+    // console.log(mockData)
+    dispatch({ type: LOAD_REPORT, payload: { reports: mockData } });
+
 }

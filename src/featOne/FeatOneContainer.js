@@ -2,9 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadReport } from './actions';
 
-const mapStateToProps = (state) => {
+import { Report } from '../components';
+// import { HighChartDefault } from '../charts';
+
+const mapStateToProps = (state = {reports: []}) => {
   return {
-    state: state
+    reports: state.reports
   }
 }
 
@@ -27,15 +30,24 @@ class FeatOneContainer extends React.Component {
     console.log('updated', this.props)
   }
 
+  testSize() {
+    for (let i = 0; i < 5500; i++) {
+      console.log('hello')
+    }
+  }
+
   onClick() {
-    console.log('clicked', this.props);
-    this.props.loadReport();
+    // console.log('clicked', );
+    this.testSize();
+    // this.props.loadReport();
   }
 
   render() {
+
     return (
       <div onClick={ this.onClick }>
         This is FeatOneContainer
+        < Report reports={ this.props.reports } />
       </div>
     )
   }
