@@ -1,4 +1,4 @@
-const transformToArray = (data) => {
+export const ordersToHighChart = (data) => {
   const returnArray = [];
   data.forEach((datum) => {
     const {point, doint} = datum[0];
@@ -8,5 +8,3 @@ const transformToArray = (data) => {
   console.log(returnArray)
   return returnArray;
 }
-
-export default transformToArray;
