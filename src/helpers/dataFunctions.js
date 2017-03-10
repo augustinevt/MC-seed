@@ -1,10 +1,9 @@
-export const ordersToHighChart = (data) => {
-  const returnArray = [];
-  data.forEach((datum) => {
-    const {point, doint} = datum[0];
-    const sum = point + doint;
-    returnArray.push([sum]);
+export const ordersToHighChart = (data, filter) => {
+  const month = data;
+  const dataArray = [];
+  month.forEach((datum) => {
+    dataArray.push([datum.date, datum[`${filter}`]])
   })
-  console.log(returnArray)
-  return returnArray;
+
+  return [{ name: 'total', data: dataArray }]
 }

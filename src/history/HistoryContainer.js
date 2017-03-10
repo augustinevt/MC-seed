@@ -1,12 +1,14 @@
 import React from 'react';
-import { loadOrderReport } from './actions';
-
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state = { F1Data: [] }) => {
+import { loadOrderReport } from './actions';
+import { HighChartDefault } from '../charts';
 
-  console.log(state)
-  return { F1data: state.F1data, }
+const mapStateToProps = (state = { F1Data: [] }) => {
+  // const data = ordersToHighChart(state.F1Data, 'total')
+  const data = state.F1Data;
+  console.log(data)
+  return { F1Data: data }
 };
 
 const mapDispatchToProps = ({
@@ -19,10 +21,12 @@ class HistoryContainer extends React.Component {
     this.state = {};
   }
 
+
   render() {
     return(
       <div>
         { this.props.children }
+        < HighChartDefault data={ this.props.F1Data } />
       </div>
     );
   }

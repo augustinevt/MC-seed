@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactHighcharts from 'react-highcharts';
-import styles from './charts.css';
+// import styles from './charts.css';
 
 
 const defaultProps = {
@@ -124,12 +124,16 @@ class HighChartDefault extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    console.log('update!')
+  }
+
   onClick() {
     console.log(this.state.config.series[0].data)
   }
 
   render() {
-    console.log('HCD: props', this.props)
+    console.log('HCD: props', this.state.config.series)
     return (
     <div onClick={ this.onClick } style={{width: this.props.width, border: 'solid' }}>
 
