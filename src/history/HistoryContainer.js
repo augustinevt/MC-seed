@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { loadOrderReport } from './actions';
-import { HighChartDefault } from '../charts';
+// import { HighChartDefault } from '../charts';
 import { ChartJSDefault } from '../charts';
-import { D3Default } from '../charts';
-import { D3Faux } from '../charts';
+// import { D3Default } from '../charts';
+// import { D3Faux } from '../charts';
+import { ControlDefault } from '../charts';
 
 const mapStateToProps = (state = { F1Data: [] }) => {
   // const data = ordersToHighChart(state.F1Data, 'total')
@@ -30,6 +31,7 @@ class HistoryContainer extends React.Component {
       <div>
         { this.props.children }
         < ChartJSDefault data={ this.props.F1ChartJS } />
+        < ControlDefault />
       </div>
     );
   }
