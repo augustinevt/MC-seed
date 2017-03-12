@@ -10,8 +10,8 @@ import { D3Faux } from '../charts';
 const mapStateToProps = (state = { F1Data: [] }) => {
   // const data = ordersToHighChart(state.F1Data, 'total')
   const data = state.F1Data;
-  console.log(data)
-  return { F1Data: data }
+  console.log(state)
+  return { F1Data: data, F1ChartJS: state.F1Chartjs }
 };
 
 const mapDispatchToProps = ({
@@ -29,9 +29,7 @@ class HistoryContainer extends React.Component {
     return(
       <div>
         { this.props.children }
-        < ChartJSDefault />
-        < D3Default />
-        < D3Faux />
+        < ChartJSDefault data={ this.props.F1ChartJS } />
       </div>
     );
   }
