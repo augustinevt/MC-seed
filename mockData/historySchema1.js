@@ -12,7 +12,7 @@
   //The processing to get the totals out of the seller scopes
   //doesn't seem that bad...
 
-  totals: {
+  categoryAggregate: {
     electronics: {
       orders: 12,
       margin: 16,

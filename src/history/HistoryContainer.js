@@ -8,11 +8,11 @@ import { ChartJSDefault } from '../charts';
 // import { D3Faux } from '../charts';
 import { ControlDefault } from '../charts';
 
-const mapStateToProps = (state = { F1Data: [] }) => {
-  // const data = ordersToHighChart(state.F1Data, 'total')
-  const data = state.F1Data;
-  console.log(state)
-  return { F1Data: data, F1ChartJS: state.F1Chartjs }
+import { getHistoricalOrders } from './selectors';
+
+const mapStateToProps = ( state ) => {
+  console.log('hello from MPTP', state, state.filters, [], state.orders)
+  return { F1ChartJS: state.F1Chartjs, historical: getHistoricalOrders(state)}
 };
 
 const mapDispatchToProps = ({
@@ -27,10 +27,11 @@ class HistoryContainer extends React.Component {
 
 
   render() {
+    console.log('Hello from HC:render! this is getHistoricalOrders!', this.props.historical)
     return(
       <div>
         { this.props.children }
-        < ChartJSDefault data={ this.props.F1ChartJS } />
+        < ChartJSDefault data={ this.props.historical } />
         < ControlDefault />
       </div>
     );

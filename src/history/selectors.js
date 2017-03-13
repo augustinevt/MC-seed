@@ -1,20 +1,31 @@
 import { createSelector } from 'reselect'
 
-const getDataFilters = (state) => state.filters;
-const updateList = (state) => state.updateList;
+const getFilters = (state) => state.filters
+const getUpdateList = (state) => state.updateList;
+const getOrderData = (state) => state.orders;
 
-//orderFilters = { seller: 'foo', category: 'foo', thing }
+export const getHistoricalOrders = createSelector(
+  [getFilters, getUpdateList, getOrderData ],
+  (filters, updateList, orderData) => {
 
-export const getVisibleTodos = createSelector(
-  [ getDataFilters, updateList ],
-  (filters, updateList) => {
-    switch (filters) {
-      case 'SHOW_ALL':
-        return todos
-      case 'SET_CATEGORY':
-        return todos.filter(t => t.completed)
-      case 'SHOW_ACTIVE':
-        return todos.filter(t => !t.completed)
-    }
+
+    console.log('hello from selector', filters, updateList, orderData)
+    const sortArray = [];
+    orderData.forEach((datum) => {
+      sortArray.push(parseInt(datum.date, 10));
+    })
+
+    const sorted = sortArray.sort();
+    const returnArray = [];
+    orderData.forEach((datum, i) => {
+      if ( (i % 30) === 0) {
+        const scaleValue = Math.floor((Math.random() * 5) + 1) ;
+        const date = sorted[i];
+        returnArray.push( {x: date, y: scaleValue})
+      }
+    })
+
+    return returnArray;
+
   }
 )

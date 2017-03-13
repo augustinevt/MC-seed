@@ -65,6 +65,7 @@ class ChartJSDefault extends React.Component {
   					}],
   					yAxes: [{
   						display: true,
+              ticks: {min: 0, max:20},
   						scaleLabel: {
   							display: true,
   							labelString: 'value'

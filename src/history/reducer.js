@@ -1,12 +1,13 @@
 import { LOAD_ORDER_REPORT } from './actionTypes';
 import orderMock from '../../mockData/orderMock';
 
-import {ordersToHighChart, ordersToChartJS} from '../helpers/dataFunctions';
+import {ordersToChartJS} from '../helpers/dataFunctions';
 
-const orders = ordersToHighChart(orderMock.slice(0, 31), 'total');
+console.log(orderMock)
+
 const ordersCJS = ordersToChartJS(orderMock.slice(0, 11), 'amazon');
 
-const historyReducer = (state = { F1Data: orders, F1Chartjs: ordersCJS }, action) => {
+const historyReducer = (state = { filters: { seller: 'amz', metric: 'margin'}, F1Chartjs: ordersCJS, orders: orderMock }, action) => {
   switch (action.type) {
     case LOAD_ORDER_REPORT:
       return { foo: 'foo'}
