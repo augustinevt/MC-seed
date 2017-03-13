@@ -4,13 +4,11 @@ import ChartBlock from './ChartBlock';
 
 import styles from './styles.css';
 
-
 import defaultReport from '../../../mockData/defaultReport';
 
 const defaultProps = {
 
 }
-
 
 class Report extends React.Component {
   constructor(props) {
@@ -20,7 +18,6 @@ class Report extends React.Component {
 
     };
   }
-
 
   getReports(reports) {
     const reportArray = [];

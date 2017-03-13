@@ -1,12 +1,21 @@
 import React from 'react';
 
-class HistoryNav extends React.Component {
+class HistoryChartWrapper extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      filter: 'total',
+      seller: null,
+    }
+  }
+
   render() {
-    console.log('nav!!!')
     return (
       <h1>nav</h1>
     )
   }
 }
 
-export default HistoryNav;
+export default HistoryChartWrapper;
