@@ -11,6 +11,8 @@ class HistoryChartWrapper extends React.Component {
     }
   }
 
+  
+
   render() {
     return (
       <h1>nav</h1>
