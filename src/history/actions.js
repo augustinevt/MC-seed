@@ -1,12 +1,15 @@
-import { LOAD_ORDER_REPORT } from './actionTypes';
+import { LOAD_ORDER_REPORT, CHANGE_HISTORY_FILTER } from './actionTypes';
 
 const getOrders = orders => ({
   type: LOAD_ORDER_REPORT,
   orders,
 });
 
-const loadOrderReport = () => (dispatch) => {
+export const loadOrderReport = () => (dispatch) => {
   dispatch(getOrders('foo'));
 }
 
-export { loadOrderReport };
+export const changeHistoryFilter = value => ({
+  type: CHANGE_HISTORY_FILTER,
+  value
+})

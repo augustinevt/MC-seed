@@ -76,6 +76,63 @@ class ChartJSDefault extends React.Component {
 			});
   }
 
+  componentDidUpdate() {
+    let ctx = document.getElementById("myChart");
+    console.log(this.props.data)
+    const propsData = this.props.data;
+    const data = [{
+      x: 9999999999,
+      y: 4
+    }, {
+      x: 8888888888,
+      y: 2
+    }, {
+      x: 7777777777,
+      y: 1
+    }, {
+      x: 6666666666,
+      y: 0
+    }];
+    console.log('data', data)
+    let myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: "Dataset with string point data",
+          backgroundColor: '220 300 200',
+          borderColor: "blue",
+          fill: false,
+          data: propsData,
+        }]
+      },
+      options: {
+        responsive: true,
+                title:{
+                    display:true,
+                    text:"Chart.js Time Point Data"
+                },
+        scales: {
+          xAxes: [{
+            type: "time",
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Date'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            ticks: {min: 0, max:20},
+            scaleLabel: {
+              display: true,
+              labelString: 'value'
+            }
+          }]
+        }
+      }
+    });
+  }
+
   render(){
     return (
       <div>
