@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/OAuthEX/node_modules
 
 # testing
 /coverage
