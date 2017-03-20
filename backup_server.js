@@ -164,13 +164,11 @@ var GOOGLE_CLIENT_SECRET  = "hWwKPPWuHzfMGHc-G35xGueD";
 //   serialized and deserialized.
 
 passport.serializeUser(function(user, done) {
-  console.log("in serializer", user)
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
-  console.log("in AHHHHHHHHHHHHHHH DEserializer", user)
-  done(null, {user: 'monky'});
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
 });
 
 
@@ -199,8 +197,7 @@ passport.use(new GoogleStrategy({
       // represent the logged-in user.  In a typical application, you would want
       // to associate the Google account with a user record in your database,
       // and return that user instead.
-      // console.log(profile, accessToken)
-      // request.logIn(profile, console.log('Success Callback'))
+      console.log(profile, accessToken)
       return done(null, profile);
     });
   }
@@ -256,13 +253,12 @@ app.get('/', function (req, res) {
 
 
 app.get('/account', ensureAuthenticated, function(req, res){
-  console.log(res, "fooo")
+  console.log('/account was hit')
   // res.render('account', { user: req.user });
 });
 
 app.get('/login', function(req, res){
-  console.log(req.user, "fooo")
-
+  console.log('/login was hit')
   // res.render('login', { user: req.user });
 });
 
@@ -272,27 +268,17 @@ app.get('/login', function(req, res){
 //   redirecting the user to google.com.  After authorization, Google
 //   will redirect the user back to this application at /auth/google/callback
 app.get('/auth/google', passport.authenticate('google', { scope: [
-       'https://www.googleapis.com/auth/plus.login']
+       'https://www.googleapis.com/auth/plus.login',
+       'https://www.googleapis.com/auth/plus.profile.emails.read']
 }));
 
 
-// app.get( '/auth/google/callback',
-//     	passport.authenticate( 'google', {
-//     		successRedirect: '/',
-//     		failureRedirect: '/login'
-// }));
+app.get( '/auth/google/callback',
+    	passport.authenticate( 'google', {
+    		successRedirect: '/',
+    		failureRedirect: '/login'
+}));
 
-app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res, next) {
-    console.log(req.user)
-    console.log(req.isAuthenticated())
-    req.login(req.user, function(err) {
-      if (err) { return next(err); }
-    console.log(req.user)
-    return res.redirect('/users/' + req.user.name.givenName);
-  });
-});
 
 app.get('/logout', function(req, res){
   req.logout();
@@ -307,7 +293,6 @@ app.listen(8080, function () {
 
 
 function ensureAuthenticated(req, res, next) {
-  console.log("EA", req)
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
 }
